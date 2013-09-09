@@ -29,22 +29,22 @@ class OptionAnalysis
 
 			opts.on("--age [NUMBER,NUMBER]", Array, "Range of age.") do |range_age|
 				# Обрабатываестя диапазон значений для свойства age
-				options.age = get_validated_data(range_age, options.age)
+				options.age = get_validated_data(range_age, options.age) if range_age
 			end
 
 			opts.on("--sale [NUMBER,NUMBER]", Array, "Range of sale.") do |range_sale|
 				# Обрабатываестя диапазон значений для свойства sale
-				options.sale = get_validated_data(range_sale, options.sale)
+				options.sale = get_validated_data(range_sale, options.sale) if range_sale
 			end
 
 			opts.on("--growth [NUMBER,NUMBER]", Array, "Range of growth.") do |range_growth|
 				# Обрабатываестя диапазон значений для свойства growth
-				options.growth = get_validated_data(range_growth, options.growth)
+				options.growth = get_validated_data(range_growth, options.growth) if range_growth
 			end
 
 			opts.on("--weight [NUMBER,NUMBER]", Array, "Range of weight.") do |range_weight|
 				# Обрабатываестя диапазон значений для свойства weight
-				options.weight = get_validated_data(range_weight, options.weight)
+				options.weight = get_validated_data(range_weight, options.weight) if range_weight
 			end
 
 
@@ -97,8 +97,8 @@ class OptionAnalysis
 
 		def get_validated_data(input_opt, default_opt)
 			# Возвращает проверенный на правильность диапазон значений
-			options = input_opt[0..1] # Берет только первые значения 
-			options = get_range(options, default_opt)
+				options = input_opt[0..1] # Берет только первые значения 
+				options = get_range(options, default_opt)
 		end
 
 		def get_range(options, default_opt)
